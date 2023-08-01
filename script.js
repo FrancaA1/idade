@@ -20,8 +20,50 @@
 // 8. Botão para limpar os registros;
 
 
+function calcular (event){
+    event.preventDefault();
+
+    let usuario = receberValores();
+    let idade = calcularIdade();
+    let calassificacao = classificarIdade();
+}
+
 
 function receberValores(){
     let nomeRecebido = document.getElementById("nome").value.trim();
-    let alturaRecebida = document.getElementById("ano de nascimento").value.trim();
+    let anoNascimento = document.getElementById("ano").value.trim();
+    let mesNascimento = document.getElementById("mes").value.trim();
+    let diaNascimento = document.getElementById("dia").value.trim();
+
+        let dadosUsuario = {
+            nome: nomeRecebido,
+            ano: anoNascimento,
+            mes: mesNascimento,
+            dia: diaNascimento,
+         }
+         console.log(dadosUsuario);
+         return dadosUsuario;
+
     }
+
+function calcularIdade(ano) {
+    const dataAtual = new Date ();
+    const anoAtual= dataAtual.getFullYear();
+    let idade = anoAtual - ano;
+    console.log(idade)
+    return idade;
+    
+}   
+
+function classificarIdade (idade){
+
+    if (idade <= 12){
+        return "Crianca"
+    }else if (idade <=17){
+        return "Adolescente"
+    }else if (idade <=65){
+        return "Adulto"
+    }else{
+        return "Idoso"
+    }
+}
